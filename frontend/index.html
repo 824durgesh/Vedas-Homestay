@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0e0e0e" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8f6f2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Vedas Homestay  Waichin Vallay— Malana, Himachal Pradesh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root { --black: #0e0e0e; --mid: #555; --muted: #999; --line: #e8e8e8; --bg: #f8f6f2; --white: #fff; --green: #2d4a1e; }
+    body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--black); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; transition: all 0.3s; }
+    nav.stuck { background: rgba(248,246,242,0.97); backdrop-filter: blur(8px); padding: 14px 48px; border-bottom: 1px solid var(--line); }
+   .nav-logo { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 600; color: white; transition: color 0.3s; line-height: 1.1; }
+  .nav-logo span {
+  display: block;
+  font-size: 0.6rem;      /* slightly bigger */
+  font-weight: 700;       /* BOLD */
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;         /* pure white (important) */
+  margin-top: 2px;
+}
+   nav.stuck .nav-logo { color: var(--black); }
+   nav.stuck .nav-logo span { color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    nav.stuck .nav-links a { color: var(--mid); }
+    .nav-links a:hover { color: white; }
+    nav.stuck .nav-links a:hover { color: var(--black); }
+    .nav-cta { padding: 9px 20px; border: 1px solid rgba(255,255,255,0.5); color: white; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; display: inline-flex; align-items: center; gap: 7px; }
+    .nav-cta:hover { background: white; color: var(--black); }
+    nav.stuck .nav-cta { border-color: var(--black); color: var(--black); }
+    nav.stuck .nav-cta:hover { background: var(--black); color: white; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 22px; height: 1.5px; background: white; transition: 0.3s; }
+    nav.stuck .hamburger span { background: var(--black); }
+    .mob-nav { display: none; position: fixed; inset: 0; background: var(--black); z-index: 99; flex-direction: column; justify-content: center; padding: 48px; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; color: white; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .mob-close { position: absolute; top: 24px; right: 40px; background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; }
+    .hero { height: 100vh; min-height: 600px; position: relative; }
+    .hero-bg { position: absolute; inset: 0; background: url("room1.jpeg") center/cover no-repeat; animation: zoom 10s ease-out forwards; }
+    @keyframes zoom { from { transform: scale(1.04); } to { transform: scale(1); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 100%); }
+    .hero-body { position: absolute; bottom: 72px; left: 48px; right: 48px; animation: up 0.9s ease 0.3s both; }
+    @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+    .hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 6.5vw, 5.5rem); font-weight: 400; color: white; line-height: 1; margin-bottom: 16px; }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+    .hero-sub { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-wa { padding: 13px 28px; background: #25D366; color: white; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-wa:hover { background: #1ebe5d; }
+    .btn-o { padding: 12px 28px; border: 1px solid rgba(255,255,255,0.5); color: white; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-o:hover { background: white; color: var(--black); }
+    .hero-rating { position: absolute; bottom: 72px; right: 48px; text-align: right; color: white; }
+    .hero-rating .n { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; line-height: 1; }
+    .hero-rating .l { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; }
+    .strip { background: #f0ebe0; display: flex; flex-wrap: wrap; border-top: 1px solid #e0d8cc; border-bottom: 1px solid #e0d8cc; }
+    .strip-item { flex: 1; min-width: 160px; padding: 22px 28px; border-right: 1px solid #ddd5c8; }
+    .strip-item:last-child { border-right: none; }
+    .strip-val { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: #1a1a1a; margin-bottom: 2px; }
+    .strip-key { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: #999; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+    .sec { padding: 88px 0; }
+    .lbl { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .hdg { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.1; color: var(--black); }
+    .hdg em { font-style: italic; color: var(--mid); }
+    .rooms { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .room { background: var(--white); overflow: hidden; }
+    .room-img { height: 240px; overflow: hidden; }
+    .room-img img { transition: transform 0.5s; }
+    .room:hover .room-img img { transform: scale(1.04); }
+    .room-body { padding: 24px 28px 28px; }
+    .room-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .room-name { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: var(--black); }
+    .room-tag { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 3px 9px; border: 1px solid var(--line); }
+    .room-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.7; margin-bottom: 18px; }
+    .room-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--line); }
+    .room-price { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; color: var(--black); }
+    .room-price span { font-family: "Inter", sans-serif; font-size: 0.72rem; color: var(--muted); }
+    .room-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .room-t { font-size: 0.68rem; color: var(--muted); padding: 2px 8px; background: var(--bg); }
+
+    .gallery-wrap { padding: 0 48px 88px; max-width: 1160px; margin: 0 auto; }
+
+    /* ─── GALLERY – updated to match screenshot layout ─── */
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-auto-rows: 260px;
+      gap: 4px;
+    }
+    .g {
+      overflow: hidden;
+      position: relative;
+    }
+    /* Every 5th+1 item (1st, 6th, 11th …) spans 2 rows = tall hero image */
+    .g:nth-child(5n+1) {
+      grid-row: span 2;
+    }
+    .g img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .g:hover img {
+      transform: scale(1.05);
+    }
+    /* No text labels over photos */
+    .g-lbl {
+      display: none;
+    }
+    /* ─────────────────────────────────────────────────── */
+
+    .socials { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .soc { background: var(--white); padding: 28px 24px; display: flex; align-items: flex-start; gap: 16px; transition: background 0.2s; }
+    .soc:hover { background: var(--bg); }
+    .soc-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .soc-platform { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .soc-handle { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; color: var(--black); margin-bottom: 4px; }
+    .soc-action { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); }
+    .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .map-wrap { border: 1px solid var(--line); overflow: hidden; }
+    .info-row { display: flex; padding: 14px 0; border-bottom: 1px solid var(--line); gap: 12px; }
+    .ik { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); width: 100px; flex-shrink: 0; padding-top: 2px; }
+    .iv { font-size: 0.85rem; color: var(--black); line-height: 1.6; }
+    .iv a { color: var(--black); transition: color 0.2s; }
+    .iv a:hover { color: var(--green); }
+    .nearby { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+    .nb { padding: 12px 14px; border: 1px solid var(--line); background: var(--white); }
+    .nb-name { font-size: 0.82rem; color: var(--black); font-weight: 500; margin-bottom: 2px; }
+    .nb-dist { font-size: 0.7rem; color: var(--muted); }
+    .pay-badges { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .pay-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border: 1px solid var(--line); background: var(--white); font-size: 0.72rem; color: var(--mid); font-weight: 500; }
+    .ql-section { margin-top: 40px; }
+    .ql-section-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .qlinks { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .ql { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--white); font-size: 0.82rem; color: var(--black); font-weight: 500; transition: background 0.2s; gap: 10px; }
+    .ql:hover { background: var(--bg); }
+    .ql-left { display: flex; align-items: center; gap: 10px; }
+    .ql-arrow { color: var(--muted); }
+    .ql-wa { background: #f0faf3; }
+    .ql-wa:hover { background: #e0f5e8; }
+    footer { background: #1a1510 !important; color: white !important; padding: 56px 0; display: block; }
+    .waf { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 12px 20px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: transform 0.3s; }
+    .waf:hover { transform: translateY(-2px); }
+    @media (max-width: 860px) {
+      nav, nav.stuck { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .wrap { padding: 0 24px; }
+      .hero-body { left: 24px; right: 24px; bottom: 48px; }
+      .hero-rating { display: none; }
+
+      /* Rooms: horizontal swipe carousel on tablet/mobile */
+      .rooms {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 16px;
+        background: transparent;
+        border: none;
+      }
+      .rooms::-webkit-scrollbar { display: none; }
+      .room {
+        flex: 0 0 80vw;
+        max-width: 340px;
+        scroll-snap-align: start;
+        border: 1px solid var(--line);
+      }
+      .room-img { height: 200px; }
+
+      /* Gallery: 2-col, large image spans both columns */
+      .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+      .g:nth-child(5n+1) { grid-column: span 2; grid-row: span 1; }
+      .socials { grid-template-columns: 1fr; }
+      .loc-grid { grid-template-columns: 1fr; gap: 32px; }
+      .strip-item { min-width: 50%; }
+      .sec { padding: 64px 0; }
+
+      /* Gallery padding mobile */
+      .gallery-wrap { padding: 0 16px 64px; }
+    }
+
+    @media (max-width: 480px) {
+      /* iOS/Android phone optimisations */
+      .gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .g:nth-child(5n+1) { grid-column: span 1; grid-row: span 1; }
+      .nearby { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .room { flex: 0 0 88vw; }
+      .strip { flex-wrap: wrap; }
+      .strip-item { min-width: 50%; flex: 1 1 50%; }
+      .sec { padding: 48px 0; }
+      .hdg { font-size: 1.7rem; }
+
+      /* iOS safe area insets — handles notch + home indicator */
+      body {
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+      .waf {
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        right: calc(16px + env(safe-area-inset-right));
+        padding: 14px 18px;
+        border-radius: 28px;
+        font-size: 0.7rem;
+      }
+      nav, nav.stuck {
+        padding-top: calc(12px + env(safe-area-inset-top));
+        padding-left: calc(16px + env(safe-area-inset-left));
+        padding-right: calc(16px + env(safe-area-inset-right));
+      }
+      .mob-nav {
+        padding-top: calc(64px + env(safe-area-inset-top));
+        padding-bottom: calc(32px + env(safe-area-inset-bottom));
+        padding-left: calc(32px + env(safe-area-inset-left));
+        padding-right: calc(32px + env(safe-area-inset-right));
+      }
+      .mob-nav a { font-size: 2.2rem; }
+      .mob-close { top: calc(20px + env(safe-area-inset-top)); right: calc(24px + env(safe-area-inset-right)); }
+
+      /* Touch targets — min 44px for iOS HIG compliance */
+      .nav-links a, .ql, .soc { min-height: 44px; }
+      .btn-wa, .btn-o { padding: 16px 24px; font-size: 0.8rem; }
+
+      /* Android overscroll colour */
+      html { background-color: #f8f6f2; }
+    }
+
+    /* Tablet landscape (iPad etc.) */
+    @media (min-width: 600px) and (max-width: 860px) {
+      .rooms {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        overflow-x: visible;
+      }
+      .room { flex: unset; max-width: unset; border: none; scroll-snap-align: unset; }
+      .room-img { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+  Vedas Homestay
+  <span>Waichin Valley</span>
+</div>
+  <div class="nav-links">
+    <a href="#gallery">Gallery</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#location">Location</a>
+    <a href="https://wa.me/917876211211" target="_blank" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/></svg>
+      Book a Stay
+    </a>
+  </div>
+  <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" onclick="closeMob()">&#10005;</button>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#rooms" onclick="closeMob()">Rooms</a>
+  <a href="#location" onclick="closeMob()">Location</a>
+  <a href="https://wa.me/917876211211" target="_blank" onclick="closeMob()">Book a Stay</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <p class="hero-eyebrow"> &mdash; Malana, Himachal Pradesh</p>
+    <h1>A place to <em>rest</em><br>in the mountains</h1>
+    <p class="hero-sub">Cafe and homestay &mdash; 3.8 km from Malana village.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/917876211211" target="_blank" class="btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/></svg>
+        Book on WhatsApp
+      </a>
+      <a href="tel:+917876211211" class="btn-o">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Now
+      </a>
+    </div>
+  </div>
+  <div class="hero-rating">
+    <div class="n">4.9</div>
+    <div class="l">130 Guest Reviews</div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item"><div class="strip-val">10:00 AM</div><div class="strip-key">Check-in from</div></div>
+  <div class="strip-item"><div class="strip-val">12:00 PM</div><div class="strip-key">Check-out by</div></div>
+  <div class="strip-item"><div class="strip-val">7AM &ndash; 9PM</div><div class="strip-key">Cafe hours</div></div>
+  <div class="strip-item"><div class="strip-val">Cash &amp; UPI</div><div class="strip-key">Payment accepted</div></div>
+  <div class="strip-item"><div class="strip-val">Pets Welcome</div><div class="strip-key">With advance notice</div></div>
+</div>
+
+<section class="sec" id="gallery" style="background: var(--bg); padding-bottom: 0;">
+  <div class="wrap">
+    <p class="lbl">Gallery</p>
+    <h2 class="hdg" style="margin-bottom:32px;">The place, <em>as it is</em></h2>
+  </div>
+  <div class="gallery-wrap">
+    <div class="gallery">
+      <!-- Block 1: items 1-5 → item 1 tall left, items 2-5 fill 2×2 right -->
+      <div class="g"><img src="room7.png" alt="Valley" /></div>
+      <div class="g"><img src="room6.png" alt="Cafe" /></div>
+      <div class="g"><img src="room10.png" alt="Trek" /></div>
+      <div class="g"><img src="room8.png" alt="Sunset" /></div>
+      <div class="g"><img src="room5.png" alt="Garden" /></div>
+      <!-- Block 2: items 6-10 → item 6 tall left, items 7-10 fill 2×2 right -->
+      <div class="g"><img src="room11.jpeg" alt="Cafe Entry" /></div>
+      <div class="g"><img src="room12.jpeg" alt="Mountain" /></div>
+      <div class="g"><img src="room9.png" alt="Mountain" /></div>
+      <div class="g"><img src="room13.jpeg" alt="Valley" /></div>
+      <div class="g"><img src="room14.jpeg" alt="Cafe" /></div>
+      <!-- Block 3: items 11-13 (partial) -->
+      <div class="g"><img src="room15.jpeg" alt="Trek" /></div>
+      <div class="g"><img src="room16.jpeg" alt="Sunset" /></div>
+      <div class="g"><img src="room17.jpeg" alt="Garden" /></div>
+       <div class="g"><img src="room18.jpeg" alt="Sunset" /></div>
+      <div class="g"><img src="room19.jpeg" alt="Garden" /></div>
+    </div>
+    <p style="text-align:center; margin-top:20px; font-size:0.78rem; color:var(--muted);">Follow us on Instagram &mdash; <a href="https://www.instagram.com/vedas.homestay?igsh=MWxkN2txdWp5bnJqeg%3D%3D" target="_blank" style="color:var(--green); font-weight:500;">@vedas.homestay</a></p>
+  </div>
+</section>
+
+<section class="sec" id="rooms" style="background: var(--white);">
+  <div class="wrap">
+    <p class="lbl">Accommodation</p>
+    <h2 class="hdg" style="margin-bottom:40px;">Where you will <em>sleep</em></h2>
+    <div class="rooms">
+      <div class="room">
+        <div class="room-img"><img src="room20.jpeg" alt="Double Room" /></div>
+        <div class="room-body">
+          <div class="room-top"><h3 class="room-name">Double Room</h3><span class="room-tag">1 Double Bed</span></div>
+          <p class="room-desc">A quiet room with garden view and wooden flooring. Good for couples or solo travellers wanting their own space after a long trail.</p>
+          <div class="room-foot">
+            <div class="room-price">&#8377;1,110 <span>/ night</span></div>
+            <div class="room-tags"><span class="room-t">Wi-Fi</span><span class="room-t">Hot Water</span><span class="room-t">Garden View</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="room">
+        <div class="room-img"><img src="room21.jpeg" alt="Triple Room" /></div>
+        <div class="room-body">
+          <div class="room-top"><h3 class="room-name">Triple Room</h3><span class="room-tag">3 Guests</span></div>
+          <p class="room-desc">Spacious room that fits three comfortably. Works well for a group of friends or a small family exploring the valley together.</p>
+          <div class="room-foot">
+            <div class="room-price">&#8377;1,258 <span>/ night</span></div>
+            <div class="room-tags"><span class="room-t">Wi-Fi</span><span class="room-t">Hot Water</span><span class="room-t">3 Guests</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background: var(--bg);">
+  <div class="wrap">
+    <p class="lbl">Find Us Online</p>
+    <h2 class="hdg" style="margin-bottom:32px;">Stay <em>connected</em></h2>
+    <div class="socials">
+      <a href="https://www.instagram.com/vedas.homestay?igsh=MWxkN2txdWp5bnJqeg%3D%3D" target="_blank" class="soc">
+        <div class="soc-icon" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div><div class="soc-platform">Instagram</div><div class="soc-handle">@vedas.homestay</div><div class="soc-action">View Profile &rarr;</div></div>
+      </a>
+      <a href="https://www.facebook.com/vedas.cafe/" target="_blank" class="soc">
+        <div class="soc-icon" style="background:#1877F2;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div><div class="soc-platform">Facebook</div><div class="soc-handle">vedas.cafe</div><div class="soc-action">View Page &rarr;</div></div>
+      </a>
+      <a href="https://wa.me/917876211211" target="_blank" class="soc">
+        <div class="soc-icon" style="background:#25D366;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/></svg>
+        </div>
+        <div><div class="soc-platform">WhatsApp</div><div class="soc-handle">+91 78762 11211</div><div class="soc-action">Chat with us &rarr;</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="location" style="background: var(--bg);">
+  <div class="wrap">
+    <p class="lbl">Getting Here</p>
+    <h2 class="hdg" style="margin-bottom:40px;">Where we <em>are</em></h2>
+    <div class="loc-grid">
+      <div>
+        <div class="map-wrap">
+          <iframe title="Vedas Homestay " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.234!2d77.2860763!3d32.0962294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390461f243c0afe5%3A0xb5826351da9cba98!2sVedas%20Homestay%20%7C%20Waichin%20Valley!5e0!3m2!1sen!2sin!4v1681000000000!5m2!1sen!2sin" width="100%" height="280" style="border:0;display:block;" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div>
+          <div class="info-row"><div class="ik">Address</div><div class="iv">Waichin Valley, Malana, Kullu &mdash; 175105, Himachal Pradesh</div></div>
+          <div class="info-row"><div class="ik">Phone</div><div class="iv"><a href="tel:+917876211211">+91 78762 11211</a></div></div>
+          <div class="info-row"><div class="ik">Email</div><div class="iv"><a href="mailto:cafevedas@gmail.com">cafevedas@gmail.com</a></div></div>
+          <div class="info-row"><div class="ik">Check-in</div><div class="iv">10:00 AM &nbsp;&bull;&nbsp; Check-out 12:00 PM</div></div>
+          <div class="info-row">
+            <div class="ik">Payment</div>
+            <div class="iv">
+              <div style="margin-bottom:8px;">Cash and UPI both accepted at check-in.</div>
+              <div class="pay-badges">
+                <span class="pay-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Cash</span>
+                <span class="pay-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>UPI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ql-section">
+          <div class="ql-section-title">Quick Links</div>
+          <div class="qlinks">
+            <a href="https://wa.me/917876211211" target="_blank" class="ql ql-wa">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/></svg>Book on WhatsApp</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+            <a href="tel:+917876211211" class="ql">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--mid)"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call &mdash; +91 78762 11211</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+            <a href="mailto:cafevedas@gmail.com" class="ql">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email &mdash; cafevedas@gmail.com</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+            <a href="https://www.instagram.com/vedas.homestay?igsh=MWxkN2txdWp5bnJqeg%3D%3D" target="_blank" class="ql">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+            <a href="https://www.facebook.com/vedas.cafe/" target="_blank" class="ql">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+            <a href="https://www.google.com/maps/place/Vedas+Homestay+%7C+Waichin+Valley/@32.0962294,77.2860763,799m/data=!3m1!1e3!4m9!3m8!1s0x390461f243c0afe5:0xb5826351da9cba98!5m2!4m1!1i2!8m2!3d32.0962294!4d77.2860763!16s%2Fg%2F11ptv7ngh7!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="ql">
+              <div class="ql-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--mid)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Get Directions</div>
+              <span class="ql-arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="lbl" style="margin-bottom:14px;">Nearby</p>
+        <div class="nearby">
+          <div class="nb"><div class="nb-name">Malana Village</div><div class="nb-dist">3.8 km</div></div>
+          <div class="nb"><div class="nb-name">Chalal Trek Trail</div><div class="nb-dist">2 km</div></div>
+          <div class="nb"><div class="nb-name">Parvati River</div><div class="nb-dist">5 km</div></div>
+          <div class="nb"><div class="nb-name">Kasol</div><div class="nb-dist">18 km</div></div>
+          <div class="nb"><div class="nb-name">Kheerganga Trek</div><div class="nb-dist">22 km</div></div>
+          <div class="nb"><div class="nb-name">Kullu Airport</div><div class="nb-dist">26 km</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background: var(--white);">
+  <div class="wrap">
+    <p class="lbl">Guest Reviews</p>
+    <h2 class="hdg" style="margin-bottom: 12px;">What guests <em>say</em></h2>
+    <div style="display:flex; align-items:center; gap:20px; margin-bottom:40px; padding:20px 24px; background:var(--bg); border:1px solid var(--line); border-radius:2px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--black); line-height:1;">4.9</span>
+      </div>
+      <div>
+        <div style="display:flex; gap:3px; margin-bottom:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <div style="font-size:0.78rem; color:var(--muted);">Based on Google Reviews &nbsp;&bull;&nbsp; Vedas Homestay, Waichin Valley</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Vedas+Homestay+%7C+Waichin+Valley/@32.0962294,77.2860763,799m/data=!3m1!1e3!4m14!1m2!3m1!10e5!3m10!1s0x390461f243c0afe5:0xb5826351da9cba98!5m2!4m1!1i2!8m2!3d32.0962294!4d77.2860763!9m1!1b1!16s%2Fg%2F11ptv7ngh7!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border:1px solid var(--line); background:white; font-size:0.75rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--black); transition:all 0.2s;">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        See All Reviews
+      </a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px; margin-bottom:36px;">
+      <div style="background:var(--bg); border:1px solid var(--line); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#4285F4;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.9rem;flex-shrink:0;">A</div>
+            <div><div style="font-size:0.85rem;font-weight:600;color:var(--black);">Arjun M.</div><div style="font-size:0.7rem;color:var(--muted);">Google Review</div></div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+        <p style="font-size:0.84rem;color:var(--mid);line-height:1.7;font-style:italic;">"One of the most peaceful stays I have had. The mountain view room is absolutely worth it. Chai in the morning while watching the Himalayas &mdash; unforgettable."</p>
+      </div>
+      <div style="background:var(--bg); border:1px solid var(--line); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#34A853;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.9rem;flex-shrink:0;">P</div>
+            <div><div style="font-size:0.85rem;font-weight:600;color:var(--black);">Priya S.</div><div style="font-size:0.7rem;color:var(--muted);">Google Review</div></div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+        <p style="font-size:0.84rem;color:var(--mid);line-height:1.7;font-style:italic;">"Host was incredibly helpful with trek planning. Food at the cafe is delicious &mdash; the thukpa and kahwa are must-tries. The garden is perfect for reading."</p>
+      </div>
+      <div style="background:var(--bg); border:1px solid var(--line); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#EA4335;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.9rem;flex-shrink:0;">R</div>
+            <div><div style="font-size:0.85rem;font-weight:600;color:var(--black);">Rahul K.</div><div style="font-size:0.7rem;color:var(--muted);">Google Review</div></div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+        <p style="font-size:0.84rem;color:var(--mid);line-height:1.7;font-style:italic;">"Beautiful location, warm hosts, and amazing food. Stayed 3 nights and it felt like home. The view from the room every morning is something I will never forget."</p>
+      </div>
+      <div style="background:var(--bg); border:1px solid var(--line); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#FBBC05;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:0.9rem;flex-shrink:0;">S</div>
+            <div><div style="font-size:0.85rem;font-weight:600;color:var(--black);">Sonal T.</div><div style="font-size:0.7rem;color:var(--muted);">Google Review</div></div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="#e0e0e0"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+        <p style="font-size:0.84rem;color:var(--mid);line-height:1.7;font-style:italic;">"Very peaceful place. The cafe serves amazing chai and momos. Loved the vibe of the valley. A perfect place to disconnect from the world for a few days."</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://www.google.com/maps/place/Vedas+Homestay+%7C+Waichin+Valley/@32.0962294,77.2860763,799m/data=!3m1!1e3!4m14!1m2!3m1!10e5!3m10!1s0x390461f243c0afe5:0xb5826351da9cba98!5m2!4m1!1i2!8m2!3d32.0962294!4d77.2860763!9m1!1b1!16s%2Fg%2F11ptv7ngh7!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; border:1px solid var(--line); background:white; font-size:0.78rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--black); transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Read All Google Reviews
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width:1160px; margin:0 auto; padding:0 48px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; padding:56px 0; align-items:start;">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:#d4a853; margin-bottom:14px;">Vedas Homestay</div>
+        <p style="font-size:0.82rem; color:rgba(255,255,255,0.62); line-height:1.9; max-width:300px; margin-bottom:24px;">A small cafe and homestay in Waichin Valley, Malana. Hosting travellers, trekkers and people who need a quiet place in the mountains.</p>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <a href="https://www.instagram.com/vedas.homestay?igsh=MWxkN2txdWp5bnJqeg%3D%3D" target="_blank" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.facebook.com/vedas.cafe/" target="_blank" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.threads.net/@vedas.homestay" target="_blank" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;" title="Threads"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 9.258c.98-1.454 2.568-2.179 4.733-2.179h.043c3.262.018 5.229 1.862 5.359 5.067.027.678.006 1.35-.064 2.005.123.064.24.132.352.205 1.32.856 2.147 2.054 2.554 3.067.785 1.98.59 5.089-1.803 7.419-1.822 1.768-4.041 2.495-7.192 2.512z"/></svg></a>
+          <a href="https://wa.me/917876211211" target="_blank" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;" title="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:#d4a853; margin-bottom:16px;">Contact</div>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.72); line-height:2.1;">
+          Waichin Valley, Malana<br>
+          Kullu &mdash; 175105, HP<br>
+          <a href="tel:+917876211211" style="color:rgba(255,255,255,0.72);">+91 78762 11211</a><br>
+          <a href="mailto:cafevedas@gmail.com" style="color:rgba(255,255,255,0.72);">cafevedas@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/917876211211" target="_blank" class="waf">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.337-1.504A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.732.885.933-3.617-.235-.372A9.818 9.818 0 1112 21.818z"/>
+  </svg>
+  Book on WhatsApp
+</a>
+
+<script>
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => { nav.classList.toggle("stuck", window.scrollY > 50); });
+  function openMob() { document.getElementById("mobNav").classList.add("open"); }
+  function closeMob() { document.getElementById("mobNav").classList.remove("open"); }
+</script>
+</body>
+</html>
